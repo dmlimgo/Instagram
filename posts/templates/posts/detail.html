@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="container article">
+    {{ post.title }}
+    {{ post.content }}
+    <a href="{% url 'posts:edit' post.pk %}">수정하기</a>
+    <a href="{% url 'posts:delete' post.pk %}">삭제하기</a>
+</div>
+{% endblock %}

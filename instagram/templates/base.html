@@ -9,14 +9,21 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <title>Instagramu</title>
     <style>
-        font-family: 'Poor Story', cursive;
-        font-family: 'Noto Serif KR', serif;
-        font-family: 'Noto Sans KR', sans-serif;
+        body {
+            /*font-family: 'Noto Serif KR', serif;*/
+            /*font-family: 'Noto Sans KR', sans-serif;*/
+            /*font-family: 'Poor Story', cursive;*/
+        }
+        .cards {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
     {% include '_navbar.html' %}
-    <div class="container">
+    <div class="container my-5">
         {% block body %}
         {% endblock %}    
     </div>

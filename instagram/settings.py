@@ -121,3 +121,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+MEDIA_URL = '/media/'
+# 앞에 media를 붙이겠다
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# media에서 올리는 파일들을 관리를 하고 싶다!

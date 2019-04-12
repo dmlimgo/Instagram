@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Post
 from .forms import PostForm
 from django.forms import widgets, ModelForm
@@ -21,12 +21,12 @@ def new(request):
     return render(request, 'posts/form.html', context)
 
 def detail(request, posts_pk):
-    post = Post.objects.get(pk=posts_pk)
+    post = get_object_or_404(Post, pk=posts_pk)
     context = {'post': post}
     return render(request, 'posts/detail.html', context)
     
 def edit(request, posts_pk):
-    post = Post.objects.get(pk=posts_pk)
+    post = get_object_or_404(Post, pk=posts_pk)
     if request.method == "POST":
         post_form = PostForm(request.POST, instance=post)
         post_form.save()
@@ -37,6 +37,6 @@ def edit(request, posts_pk):
     return render(request, 'posts/form.html', context)
 
 def delete(request, posts_pk):
-    post = Post.objects.get(pk=posts_pk)
+    post = get_object_or_404(Post, pk=posts_pk)
     post.delete()
     return redirect('posts:list')

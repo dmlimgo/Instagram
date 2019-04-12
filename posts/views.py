@@ -9,10 +9,12 @@ def list(request):
     context = {'posts': posts}
     return render(request, 'posts/list.html', context)
     
-def new(request):
+def create(request):
     if request.method == "POST":
-        post_form = PostForm(request.POST)
-        if post_form.is_valid:
+        post_form = PostForm(request.POST, request.FILES)
+        print(post_form)
+        print(post_form.is_valid)
+        if post_form.is_valid():
             post = post_form.save()
             return redirect('posts:list')
     else:

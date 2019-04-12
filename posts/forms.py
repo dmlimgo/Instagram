@@ -6,7 +6,7 @@ from crispy_forms.layout import Submit
 class PostForm(ModelForm):
     class Meta:
         model = Post
-        fields = ('content',)
+        fields = ('content', 'image')
         # widgets = {
         #             'content': Textarea(attrs={'placeholder': '내용을 입력하세요'})
         #             }

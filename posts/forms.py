@@ -1,15 +1,21 @@
-from .models import Post
-from django.forms import ModelForm, TextInput, Textarea
+from .models import Post, Image
+from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 
-class PostForm(ModelForm):
+
+class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('content', 'image')
-        # widgets = {
-        #             'content': Textarea(attrs={'placeholder': '내용을 입력하세요'})
-        #             }
-        # def __init__(self, *args, **kwargs):
-        #     super(PostForm, self).__init__(*args, **kwargs)
-        #     self.helper = FormHelper()
+        fields = ('content',)
+        widgets = {
+                    'content': forms.Textarea(attrs={'placeholder': '내용을 입력하세요'})
+                    }
+        labels = {
+                    'content': '내용'
+                    }
+
+class ImageForm(forms.ModelForm):
+    class Meta:
+        model = Image
+        exclude = ('post',)

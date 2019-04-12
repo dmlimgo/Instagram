@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Post
-from .forms import PostForm
+from .forms import PostForm, ImageForm
 from django.forms import widgets, ModelForm
 
 # Create your views here.
@@ -12,14 +12,15 @@ def list(request):
 def create(request):
     if request.method == "POST":
         post_form = PostForm(request.POST, request.FILES)
-        print(post_form)
-        print(post_form.is_valid)
-        if post_form.is_valid():
+        image_form = ImageForm(request.POST, request.FILES)
+        if post_form.is_valid() and image_form.is_valid():
             post = post_form.save()
+            image = image_form.save()
             return redirect('posts:list')
     else:
         post_form = PostForm()
-    context = {'post_form': post_form}
+        image_form = ImageForm()
+    context = {'post_form': post_form, 'image_form': image_form}
     return render(request, 'posts/form.html', context)
 
 def detail(request, posts_pk):

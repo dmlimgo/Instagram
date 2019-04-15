@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block body %}
+{% for user in users%}
+    <div>
+        <p><a href="{% url 'accounts:detail' user.pk %}">{{ user.username }}</a></p>
+    </div>
+{% endfor %}
+{% endblock %}

@@ -18,4 +18,7 @@ class PostForm(forms.ModelForm):
 class ImageForm(forms.ModelForm):
     class Meta:
         model = Image
-        exclude = ('post',)
+        fields = ('file',)
+        widgets = {
+            'file': forms.FileInput(attrs={'multiple':True}),
+        }

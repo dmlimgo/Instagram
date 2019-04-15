@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Post
+from .models import Post, Image
 from .forms import PostForm, ImageForm
 from django.forms import widgets, ModelForm
 
@@ -11,12 +11,30 @@ def list(request):
     
 def create(request):
     if request.method == "POST":
-        post_form = PostForm(request.POST, request.FILES)
-        image_form = ImageForm(request.POST, request.FILES)
-        if post_form.is_valid() and image_form.is_valid():
+        post_form = PostForm(request.POST)
+        # 할 필요 없음
+        # image_form = ImageForm(request.POST, request.FILES)
+        if post_form.is_valid():
             post = post_form.save()
-            image = image_form.save()
-            return redirect('posts:list')
+            # 만약 여러개의 파일을 받고 싶다면 FILES안의 getlist로 받을 수 있다.
+            files = request.FILES.getlist('file')
+            for file in files:
+                request.FILES['file'] = file
+                # 위치 인자로 넘겨주려고 했던건데
+                # image_form = ImageForm(request.POST, request.FILES)
+                # 파일인자로 넘겨줘도 된다.
+                image_form = ImageForm(files=request.FILES)
+                if image_form.is_valid():
+                    image = image_form.save(commit=False)
+                    image.post = post
+                    image.thumbnail_fill = request.FILES.get('file')
+                    print(image.thumbnail_fill)
+                    print(image.thumbnail_fill.url)
+                    image.save()
+                    print(image.thumbnail_fill)
+                    print(image.thumbnail_fill.url)
+            return redirect(post)
+            # return redirect('posts:detail', post.pk)
     else:
         post_form = PostForm()
         image_form = ImageForm()

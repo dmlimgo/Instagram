@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+<form method="POST">
+{% csrf_token %}
+{{ user_form|crispy }}
+<input type="submit" value="제출" class="button">
+</form>
+{% endblock %}

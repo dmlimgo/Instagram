@@ -1,0 +1,72 @@
+
+/*posts.css*/
+.cards-round {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    margin-top: 10px;
+    padding: 0;
+    max-width: 616px;
+}
+.cards-flat {
+    border-top: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+    padding: 0;
+}
+.title {
+    padding: 5px 5px 10px 10px;
+}
+.button {
+    border: 1px solid #e6e6e6;
+    border-radius: 25px;
+    padding: 5px 15px;
+    background-color: white;
+}
+.button:hover {
+    background-color: #F8F9FA;
+}
+.comment-box {
+    border-top: 1px solid #e6e6e6;
+    min-height: 56px;
+    line-height: 18px;
+    margin: 4px 0 0;
+    padding: 0 16px;
+    align-items: center;
+}
+.inner-box {
+    display: flex;
+    align-items: stretch;
+    height: 18px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    vertical-align: baseline;
+}
+.write-box {
+    display: inline-block;
+    border: 0;
+    outline: 0;
+    width: 554px;
+    height: 18px;
+    margin: 0;
+    padding: 0;
+    max-height: 80px;
+    font-size: 14px;
+    resize: none;
+}
+.comment-form {
+    width: inherit;
+    height: inherit;
+}
+.write-button, write-button:visited {
+    color: #3897f0;
+    opacity: .3;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 18px;
+    border: 0;
+    outline: 0;
+    width: auto;
+    height: 18px;
+    padding: 0;
+    background-color: white;
+}

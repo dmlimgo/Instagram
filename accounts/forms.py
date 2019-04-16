@@ -5,4 +5,5 @@ class UserForm(UserCreationForm):
     class Meta:
         model = User
         fields = '__all__'
+        label = {'username': 'd', 'password':'f'}
         

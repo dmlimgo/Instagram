@@ -15,7 +15,10 @@ def create(request):
         # 할 필요 없음
         # image_form = ImageForm(request.POST, request.FILES)
         if post_form.is_valid():
-            post = post_form.save()
+            
+            post = post_form.save(commit=False)
+            post.user = request.user
+            post.save()
             # 만약 여러개의 파일을 받고 싶다면 FILES안의 getlist로 받을 수 있다.
             files = request.FILES.getlist('file')
             for file in files:
@@ -60,4 +63,18 @@ def edit(request, posts_pk):
 def delete(request, posts_pk):
     post = get_object_or_404(Post, pk=posts_pk)
     post.delete()
+    return redirect('posts:list')
+    
+def like(request, posts_pk):
+    post = get_object_or_404(Post, pk=posts_pk)
+    user = request.user
+    # user가 지금 해당 게시글에 좋아요를 한 적이 있는지?
+    # if user in post.like_users.all():
+    #     post.like_users.remove(user)
+    # else:
+    #     post.like_users.add(user)
+    if post.like_users.filter(pk=user.id).exists():
+        post.like_users.remove(user)
+    else:
+        post.like_users.add(user)
     return redirect('posts:list')

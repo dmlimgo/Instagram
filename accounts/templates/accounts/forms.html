@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+<div class="form-container">
+    <div class="form-inner">
+            <form method="POST" class="form-box">
+            {% csrf_token %}
+            {{ user_form|crispy }}
+            <input type="submit" value="제출" class="button">
+            </form>
+    </div>
+</div>
+{% endblock %}

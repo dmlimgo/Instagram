@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -7,61 +8,37 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR|Noto+Serif+KR|Poor+Story" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'instagram/posts.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'instagram/nav.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'instagram/footer.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'instagram/forms.css' %}">
     <title>Instagramu</title>
     <style>
-        body {
-            /*font-family: 'Noto Serif KR', serif;*/
-            /*font-family: 'Noto Sans KR', sans-serif;*/
-            /*font-family: 'Poor Story', cursive;*/
-        }
-        .cards-round {
-            border: 1px solid #e6e6e6;
-            border-radius: 3px;
-            margin-bottom: 10px;
-            padding: 0;
-            max-width: 616px;
-        }
-        .cards-flat {
-            border-top: 1px solid #e6e6e6;
-            border-bottom: 1px solid #e6e6e6;
-            padding: 0;
-        }
-        .title {
-            padding: 5px 5px 10px 10px;
+        .body-box {
+            position: relative;
+            min-height: 100vh;
         }
         .button {
-            border: 1px solid #e6e6e6;
-            border-radius: 25px;
-            padding: 5px 15px;
-            background-color: white;
-        }
-        .button:hover {
-            background-color: #F8F9FA;
-        }
-        .comment-box {
-            border-top: 1px solid #e6e6e6;
-            min-height: 56px;
-            line-height: 18px;
-            padding: 0 5px;
-            justify-content: center;
-        }
-        .write-box {
-            border: 0;
             outline: 0;
-            width: 90%;
-            height: 18px;
-            max-height: 80px;
-            resize: none;
+            background-color: #3897f0;
+            border: 1px solid #3897f0;
+            border-radius: 4px;
+            color: #fff;
         }
     </style>
 </head>
 <body>
-    {% include '_navbar.html' %}
-    <div class="container my-5">
-        {% block body %}
-        {% endblock %}    
-    </div>
+    <div class="body-box">
+        <div>
+        {% include '_navbar.html' %}
+    
+        <div class="container mt-5">
+            {% block body %}
+            {% endblock %}    
+        </div>
     {% include '_footer.html' %}
+    </div>
+    </div>
     
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

@@ -1,0 +1,18 @@
+.form-container {
+    background-color: #fafafa;
+}
+.form-inner {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 44px;
+    margin: 0 auto;
+    max-width: 935px;
+    width: 100%;
+}
+.form-box {
+    background-color: #fff;
+    border: 1px solid #e6e6e6;
+    border-radius: 1px;
+    margin: 0 0 10px;
+    padding: 10px 0;
+}

@@ -16,7 +16,7 @@ def signup(request):
     else:    
         user_form = UserCreationForm()
     context = {'user_form': user_form}
-    return render(request, 'accounts/signup.html', context)
+    return render(request, 'accounts/forms.html', context)
     
 def detail(request, user_pk):
     user = User.objects.get(pk=user_pk)
@@ -31,7 +31,7 @@ def signin(request):
             return redirect('posts:list')
     signin_form = AuthenticationForm()
     context = {'user_form': signin_form}
-    return render(request, 'accounts/signup.html', context)
+    return render(request, 'accounts/forms.html', context)
     
 @login_required
 def signout(request):

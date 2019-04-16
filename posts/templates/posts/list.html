@@ -1,15 +1,5 @@
 {% extends 'base.html' %} {% block body %}
 <header>
-    <h1> 글 목록 </h1>
-    <a href="{% url 'posts:create' %}">글 생성하기</a>
-    <a href="{% url 'users:list' %}">사용자 목록</a>
-    
-    {% if user.is_authenticated %}
-        <a href="{% url 'accounts:signout' %}">로그아웃</a>
-    {% else %}
-        <a href="{% url 'accounts:signup' %}">회원 가입</a>
-        <a href="{% url 'accounts:signin' %}">로그인</a>
-    {% endif %}
 </header>
 
 <section>
@@ -51,13 +41,20 @@
                 <p>{{ post.content }}</p>
             </div>
             <div class="comments">
-                
+                {% if user in post.like_users.all %}
+                <a href="{% url 'posts:like' post.pk %}"><i class="fas fa-heart fa-1.5x" style="color:crimson"></i></a>
+                {% else %}
+                <a href="{% url 'posts:like' post.pk %}"><i class="far fa-heart fa-1.5x" style="color:darkgray"></i></a>
+                {% endif %}
+                <span>{{ post.like_count }}명이 좋아요를 눌렀습니다.</span>
             </div>
-            <section class="comment-box">
-                <from method="POST">
-                    <textarea type="text" name="comment" class="write-box" placeholder="댓글 달기..."></textarea>
-                    <button type="submit">게시</button>
-                </from>
+            <section class="comment-box d-flex align-items-center">
+                <div class="inner-box">
+                    <form method="POST" class="comment-form d-flex align-items-center">
+                        <textarea type="text" name="comment" class="write-box" placeholder="댓글 달기..."></textarea>
+                        <button type="submit" class="write-button">게시</button>
+                    </form>
+                </div>
             </section>
         </div>
         {% endfor %}
@@ -66,5 +63,5 @@
 
     </aside>
 </section>
-
+<br><br><br><br><br><br>
 {% endblock %}

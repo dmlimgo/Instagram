@@ -15,15 +15,30 @@
     <title>Instagramu</title>
     <style>
         .body-box {
+            background-color: #FAFAFA;
             position: relative;
             min-height: 100vh;
         }
-        .button {
+        .button, .button:hover, .button:active, .button:visited {
+            display: block;
+            width: 77%;
             outline: 0;
             background-color: #3897f0;
             border: 1px solid #3897f0;
             border-radius: 4px;
             color: #fff;
+            margin: 8px 40px;
+            padding: 5px 9px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 18px;
+            text-align: center;
+        }
+        .logo {
+            width: 180px;
+            height: 64.35px;
+            margin: 10px 85px;
         }
     </style>
 </head>
@@ -31,13 +46,12 @@
     <div class="body-box">
         <div>
         {% include '_navbar.html' %}
-    
         <div class="container mt-5">
             {% block body %}
             {% endblock %}    
         </div>
-    {% include '_footer.html' %}
-    </div>
+        {% include '_footer.html' %}
+        </div>
     </div>
     
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

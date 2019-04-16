@@ -2,13 +2,18 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Post, Image
 from .forms import PostForm, ImageForm
 from django.forms import widgets, ModelForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def list(request):
-    posts = Post.objects.order_by('-pk')
-    context = {'posts': posts}
-    return render(request, 'posts/list.html', context)
-    
+    if request.user.is_authenticated:
+        posts = Post.objects.order_by('-pk')
+        context = {'posts': posts}
+        return render(request, 'posts/list.html', context)
+    else:
+        return redirect('accounts:login')
+
+@login_required
 def create(request):
     if request.method == "POST":
         post_form = PostForm(request.POST)
@@ -44,11 +49,13 @@ def create(request):
     context = {'post_form': post_form, 'image_form': image_form}
     return render(request, 'posts/form.html', context)
 
+@login_required
 def detail(request, posts_pk):
     post = get_object_or_404(Post, pk=posts_pk)
     context = {'post': post}
     return render(request, 'posts/detail.html', context)
-    
+
+@login_required    
 def edit(request, posts_pk):
     post = get_object_or_404(Post, pk=posts_pk)
     if request.method == "POST":
@@ -60,11 +67,13 @@ def edit(request, posts_pk):
     context = {'post_form': post_form}
     return render(request, 'posts/form.html', context)
 
+@login_required
 def delete(request, posts_pk):
     post = get_object_or_404(Post, pk=posts_pk)
     post.delete()
     return redirect('posts:list')
-    
+
+@login_required
 def like(request, posts_pk):
     post = get_object_or_404(Post, pk=posts_pk)
     user = request.user

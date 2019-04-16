@@ -1,8 +1,10 @@
-from .forms import UserCreationForm
+from .forms import UserCreationForm, AuthenticationForm
 from django.shortcuts import render, redirect
-from django.contrib.auth import get_user_model, authenticate, login, logout
+from django.contrib.auth import get_user_model, authenticate
+from django.contrib.auth import login as user_login
+from django.contrib.auth import logout as user_logout
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import AuthenticationForm
+# from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.conf import settings
 
@@ -23,17 +25,17 @@ def detail(request, user_pk):
     context = {'user': user}
     return render(request, 'accounts/detail.html', context)
     
-def signin(request):
+def login(request):
     if request.method == "POST":
         signin_form = AuthenticationForm(request, request.POST)
         if signin_form.is_valid():
-            login(request, signin_form.get_user())
+            user_login(request, signin_form.get_user())
             return redirect('posts:list')
     signin_form = AuthenticationForm()
     context = {'user_form': signin_form}
     return render(request, 'accounts/forms.html', context)
     
 @login_required
-def signout(request):
-    logout(request)
+def logout(request):
+    user_logout(request)
     return redirect('posts:list')

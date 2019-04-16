@@ -5,7 +5,7 @@
     <div class="form-inner">
             <form method="POST" class="form-box">
             {% csrf_token %}
-            {{ user_form|crispy }}
+            {{ user_form }}
             <input type="submit" value="제출" class="button">
             </form>
     </div>

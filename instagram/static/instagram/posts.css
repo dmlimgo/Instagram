@@ -20,7 +20,7 @@
 }
 
 /* profile */
-.sec-pf-box {
+.sec-aside-box {
     position: fixed;
     left: 692.5px;
     top: 137px;
@@ -28,10 +28,68 @@
     height: 100vh;
     max-width: 293px;
     width: 100%;
-    background-color: green;
+}
+.sec-aside-pf-box {
+    display : flex;
+    flex-direction: row;
+    height: 62px;
+    justify-content: space-between;
+}
+.sec-aside-pf-inbox {
+    display: flex;
+    flex-direction: row;
+    max-height: 50px;
+    height: 100%;
+    width: 100%;
+    margin-bottom: 12px;
+    padding-left: 5px;
+}
+.sec-aside-pf-photo-box {
+    display: block;
+    align-self: center;
+    /*flex: none;*/
+    width: 50px;
+}
+.sec-aside-pf-photo {
+    display: block;
+    background-color: #fafafa;
+    height: 50px;
+    width: 50px;
+}
+.sec-aside-pf-name-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 14px;
+}
+.sec-aside-pf-name-nk-box {
+    display: flex;
+    font-size: 14px;
+    line-height: 18px;
+    margin-bottom: 2px;
+}
+.sec-aside-pf-name-nk {
+    color: #262626;
+    font-weight: 600;
+}
+.sec-aside-pf-name-n-box {
+    display: inline-block;
+    font-size: 12px;
+    line-height: 14px;
 }
 
+/* story */
+.sec-aside-story-box {
+    
+}
+.sec-asdie-recom-box {
+    
+}
+.sec-aside-footer-box {
+    
+}
 
+/* cards */
 .cards-box-round {
     border: 1px solid #e6e6e6;
     border-radius: 3px;

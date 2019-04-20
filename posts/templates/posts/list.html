@@ -69,8 +69,33 @@
             {% endfor %}
         </div>
     </div>
-    <div class="sec-pf-box">
-
+    <div class="sec-aside-box">
+        <div class="sec-aside-pf-box">
+            <div class="sec-aside-pf-inbox">
+                <div class="sec-aside-pf-photo-box" role="button">
+                    <a href="{% url 'accounts:profile' %}" class="sec-aside-pf-photo">
+                        {% if user.profile.image %}
+                        <img src="{{ user.profile.image.url }}" style="height:100%; width:100%; border-radius: 50%;">
+                        {% else %}
+                        <img src="{% static 'instagram/undefined_profile.jpg' %}" style="height:100%; width:100%; border-radius: 50%;">
+                        {% endif %}
+                    </a>
+                </div>
+                <div class="sec-aside-pf-name-box">
+                    <div class="sec-aside-pf-name-nk-box">
+                        <a href="{% url 'accounts:profile' %}" class="sec-aside-pf-name-nk">
+                            {{ user.profile.nickname }}
+                        </a>
+                    </div>
+                    <div class="sec-aside-pf-name-n-box">
+                        {{ user.username }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sec-aside-story-box"></div>
+        <div class="sec-aside-recom-box"></div>
+        <div class="sec-aside-footer-box"></div>
     </div>
 </section>
 <br><br><br><br><br><br>

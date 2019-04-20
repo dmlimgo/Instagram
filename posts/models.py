@@ -35,5 +35,11 @@ class Image(models.Model):
             upload_to=post_image_path,
             processors = [ResizeToFill(616, 616)],
             format = 'JPEG',
-            options={'quality': 90},
+            options={'quality': 150},
         )
+        
+class Comment(models.Model):
+    title = models.CharField(max_length=30)
+    content = models.TextField()
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

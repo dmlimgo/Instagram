@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<div class="profile-box">
+    <header class="pf-header-box">
+        <div class="pf-header-img-box">
+            {% if user.profile.image %}
+            <img src="{{ user.profile.image.url }}" class="pf-header-img">
+            {% else %}
+            <img src="{% static 'instagram/undefined_profile.jpg' %}" class="pf-header-img">
+            {% endif %}
+        </div>
+        <section class="pf-header-info-box">
+            <div class="pf-header-info-nkname-box">
+                <h1 class="pf-header-info-nkname">
+                {% if user.profile.nickname %}
+                    {{ user.profile.nickname }}
+                {% else %}
+                    {{ user.username }}
+                {% endif %}
+                </h1>
+                <a class="pf-header-info-edit">
+                    프로필 편집
+                </a>
+                <div class="pf-header-info-setting">
+                    <a href="{% url 'accounts:logout' %}"><span class="nav-icon setting"></span></a>
+                </div>
+            </div>
+            <ul class="pf-header-info-nav-box">
+                <li class="pf-header-info-li-box">
+                    게시물
+                    <span class="fw-600">{{ user.post_set.count }}</span>
+                </li>
+                <li class="pf-header-info-li-box">
+                    팔로워
+                    <span class="fw-600">{{ user.followers.count }}</span>
+                </li>
+                <li class="pf-header-info-li-box">
+                    팔로우
+                    <span class="fw-600">{{ user.followings.count }}</span>
+                </li>
+            </ul>
+            <div class="pf-header-info-discription-box">
+                <h1 class="pf-header-info-discription">
+                    {{ user.username }}
+                </h1>
+                <span>
+                    {{ user.profile.introduction }}
+                </span>
+            </div>
+        </section>
+    </header>
+    <div class="pf-nav">
+        <a href="#" class="pf-nav-items">
+            <span class="pf-nav-items-box">
+                <div class="pf-nav-icon posts"></div>
+                <span class="pf-nav-post-char">게시물</span>
+            </span>
+        </a>
+        <a href="#" class="pf-nav-items">
+            <span class="pf-nav-items-box">
+                <div class="pf-nav-icon igtv"></div>
+                <span class="pf-nav-post-char">IGTV</span>
+            </span>
+        </a>
+        <a href="#" class="pf-nav-items">
+            <span class="pf-nav-items-box">
+                <div class="pf-nav-icon saved"></div>
+                <span class="pf-nav-post-char">저장됨</span>
+            </span>
+        </a>
+        <a href="#" class="pf-nav-items" style="margin-right: 0;">
+            <span class="pf-nav-items-box">
+                <div class="pf-nav-icon taged"></div>
+                <span class="pf-nav-post-char">태그됨</span>
+            </span>
+        </a>
+    </div>
+    <div class="notyet">
+        <br>
+        공사중 입니다
+    </div>
+    
+    
+    
+    
+</div>
+{% endblock %}

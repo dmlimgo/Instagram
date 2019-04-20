@@ -37,11 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
     'crispy_forms',
     'imagekit',
     'accounts',
     'posts',
-    'users',
 ]
 
 MIDDLEWARE = [
@@ -133,3 +133,7 @@ MEDIA_URL = '/media/'
 # 앞에 media를 붙이겠다
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # media에서 올리는 파일들을 관리를 하고 싶다!
+
+AUTH_USER_MODEL = 'accounts.User'
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'

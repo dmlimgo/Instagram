@@ -1,67 +1,77 @@
-{% extends 'base.html' %} {% block body %}
-<header>
-</header>
-
-<section>
-    <article>
-        {% for post in posts %}
-        <div class="container cards-round">
-            <div class="title">
-                <span>User</span>
-            </div>
-            <div class="content cards-flat">
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        {% for image in post.image_set.all %}
-                        <div class="carousel-item {% if forloop.counter == 1 %} active {% endif %}">
-                            <img src="{{ image.thumbnail_fill.url }}" class="d-block w-100" alt="{{ image }}">
-                        </div>
-                        {% endfor %}
+{% extends 'base.html' %} 
+{% load static %}
+{% block body %}
+<section class="section-box">
+    <div class="sec-article">
+        <div class="sec-article-box">
+            {% for post in posts %}
+            <div class="cards-box-round">
+                <header class="card-title">
+                    <div class="card-title-canvas" role="button" href="{% url 'accounts:detail' post.user.pk %}">
+                        <span class="card-title-photo">
+                            {% if post.user.profile.image.url %}
+                            <img src="{{ post.user.profile.image.url }}" style="height: 34px; width:34px;">
+                            {% else %}
+                            <img src="{% static 'instagram/undefined_profile.jpg' %}" style="height: 34px; width:34px;">
+                            {% endif %}
+                        </span>
                     </div>
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                  </a>
+                    <span>{{ post.user.profile.nickname }}</span>
+                </header>
+                <div class="content cards-flat">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            {% for image in post.image_set.all %}
+                            <div class="carousel-item {% if forloop.counter == 1 %} active {% endif %}">
+                                <img src="{{ image.thumbnail_fill.url }}" class="d-block w-100" alt="{{ image }}">
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                    </div>
+                    <!--<img src="{{ post.image_set.first.file.url }}" width="100%" alt="picture">-->
                 </div>
-                <!--<img src="{{ post.image_set.first.file.url }}" width="100%" alt="picture">-->
-            </div>
-            <div class="bar">
-
-            </div>
-            <div class="content2">
-                <p>{{ post.content }}</p>
-            </div>
-            <div class="comments">
-                {% if user in post.like_users.all %}
-                <a href="{% url 'posts:like' post.pk %}"><i class="fas fa-heart fa-1.5x" style="color:crimson"></i></a>
-                {% else %}
-                <a href="{% url 'posts:like' post.pk %}"><i class="far fa-heart fa-1.5x" style="color:darkgray"></i></a>
-                {% endif %}
-                <span>{{ post.like_count }}명이 좋아요를 눌렀습니다.</span>
-            </div>
-            <section class="comment-box d-flex align-items-center">
-                <div class="inner-box">
-                    <form method="POST" class="comment-form d-flex align-items-center">
-                        <textarea type="text" name="comment" class="write-box" placeholder="댓글 달기..."></textarea>
-                        <button type="submit" class="write-button">게시</button>
-                    </form>
+                <div class="bar">
+    
                 </div>
-            </section>
+                <div class="content2">
+                    <p>{{ post.content }}</p>
+                </div>
+                <div class="comments">
+                    {% if user in post.like_users.all %}
+                    <a href="{% url 'posts:like' post.pk %}"><i class="fas fa-heart fa-1.5x" style="color:crimson"></i></a>
+                    {% else %}
+                    <a href="{% url 'posts:like' post.pk %}"><i class="far fa-heart fa-1.5x" style="color:darkgray"></i></a>
+                    {% endif %}
+                    <span>{{ post.like_count }}명이 좋아요를 눌렀습니다.</span>
+                </div>
+                <section class="comment-box d-flex align-items-center">
+                    <div class="inner-box">
+                        <form method="POST" class="comment-form d-flex align-items-center">
+                            <textarea type="text" name="comment" class="write-box" placeholder="댓글 달기..."></textarea>
+                            <button type="submit" class="write-button">게시</button>
+                        </form>
+                    </div>
+                </section>
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-    </article>
-    <aside>
+    </div>
+    <div>
 
-    </aside>
+    </div>
 </section>
 <br><br><br><br><br><br>
 {% endblock %}

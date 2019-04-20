@@ -1,15 +1,23 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
+{% load static %}
+
 {% block body %}
 <div class="form-container">
+    {% if request.resolver_match.url_name == 'login' %}
+    <div class="form-iphone">
+        <img src="{% static 'instagram/iphone.png' %}" style="disply:inline-block;">
+    </div>
+    {% endif %}
     <div class="form-inner">
         <form method="POST" class="form-box">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png" class="logo">
             <div class="form-box-container">
                 {% if request.resolver_match.url_name == 'signup' %}
-                <div class="button">
-                    이미 있는 아이디로 로그인
-                </div>
+                <a href="{% url 'accounts:login' %}">
+                    <div class="button">
+                        이미 있는 아이디로 로그인
+                    </div>
+                </a>
                 <div class="form-or">
                     <div class="form-line"></div>
                     <div class="form-or-text">또는</div>
@@ -21,7 +29,11 @@
                 {% csrf_token %}
                 {{ user_form }}
                 <div class="form-submit">
+                    {% if request.resolver_match.url_name == 'signup' %}
                     <input type="submit" value="가입" class="button">
+                    {% else %}
+                    <input type="submit" value="로그인" class="button">
+                    {% endif %}
                 </div>
                 {% if request.resolver_match.url_name == 'signup' %}
                 <div class="form-explain">
@@ -34,6 +46,13 @@
                 {% endif %}
             </div>
         </form>
+        {% if request.resolver_match.url_name == 'login' %}
+        <div class="form-box">
+            <div class="form-explain form-explain-bottom">
+                계정이 없으신가요? <a href="{% url 'accounts:signup' %}" class="form-signuptext">가입하기</a>
+            </div>
+        </div>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

@@ -9,10 +9,10 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ('content',)
         widgets = {
-                    'content': forms.Textarea(attrs={'placeholder': '내용을 입력하세요'})
+                    'content': forms.Textarea(attrs={'placeholder': '내용을 입력하세요', 'class': 'post-textarea'})
                     }
         labels = {
-                    'content': '내용'
+                    'content': ''
                     }
 
 class ImageForm(forms.ModelForm):
@@ -20,5 +20,8 @@ class ImageForm(forms.ModelForm):
         model = Image
         fields = ('file',)
         widgets = {
-            'file': forms.FileInput(attrs={'multiple':True}),
-        }
+            'file': forms.FileInput(attrs={'multiple':True, 'class': 'post-input-box'}),
+                    }
+        labels = {
+                    'file': ''
+                    }

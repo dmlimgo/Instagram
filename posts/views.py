@@ -2,16 +2,28 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Post, Image
 from .forms import PostForm, ImageForm
 from django.forms import widgets, ModelForm
+from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
 # Create your views here.
+@login_required
 def list(request):
-    if request.user.is_authenticated:
-        posts = Post.objects.order_by('-pk')
-        context = {'posts': posts}
-        return render(request, 'posts/list.html', context)
-    else:
-        return redirect('accounts:login')
+    from django.db.models import Q
+    posts = Post.objects.filter(
+                        Q(user__in=request.user.followings.values('id'))
+                        | Q(user=request.user.id)
+                        ).order_by('-pk')
+    context = {'posts': posts}
+    return render(request, 'posts/list.html', context)
+# @login_required
+# def list(request):
+#     if request.user.is_authenticated:
+#         posts = Post.objects.order_by('-pk')
+#         context = {'posts': posts}
+#         return render(request, 'posts/list.html', context)
+#     else:
+#         return redirect('accounts:login')
 
 @login_required
 def create(request):
@@ -41,8 +53,10 @@ def create(request):
                     image.save()
                     print(image.thumbnail_fill)
                     print(image.thumbnail_fill.url)
-            return redirect(post)
             # return redirect('posts:detail', post.pk)
+            # 더 나은방법
+            # return redirect(post)
+            return redirect('posts:list')
     else:
         post_form = PostForm()
         image_form = ImageForm()

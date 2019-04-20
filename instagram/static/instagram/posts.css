@@ -1,21 +1,43 @@
 
 /*posts.css*/
-.cards-round {
+.cards-box-round {
     border: 1px solid #e6e6e6;
     border-radius: 3px;
-    margin-top: 10px;
+    margin-bottom: 60px;
     padding: 0;
     max-width: 616px;
+    background-color: white;
 }
 .cards-flat {
     border-top: 1px solid #e6e6e6;
     border-bottom: 1px solid #e6e6e6;
     padding: 0;
 }
-.title {
-    padding: 5px 5px 10px 10px;
-    color: white;
+.card-title {
+    display: flex;
+    flex-direction: row;
+    height: 60px;
+    padding: 16px;
+    align-items: center;
+    border-bottom: 1px solid #efefef;
     background-color: white;
+    margin: 0;
+}
+.card-title-canvas {
+    display: flex;
+    height: 44px;
+    width: 44px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.card-title-photo {
+    display: block;
+    height: 34px;
+    width: 34px;
+    background-color: #fafafa;
+    border-radius: 50%;
+    overflow: hidden;
 }
 .button {
     border: 1px solid #e6e6e6;
@@ -61,7 +83,7 @@
 }
 .write-button, write-button:visited {
     color: #3897f0;
-    opacity: .3;
+    /*opacity: .3;*/
     display: inline-block;
     font-size: 14px;
     line-height: 18px;
@@ -71,4 +93,10 @@
     height: 18px;
     padding: 0;
     background-color: white;
+}
+.content2 {
+    
+}
+.comments {
+    
 }

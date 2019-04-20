@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="form-container">
+    <div class="form-inner">
+        <form method="POST" class="form-box" enctype="multipart/form-data">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png" class="logo">
+            <div class="form-box-container">
+                <div style="height:15px;"></div>
+                {% csrf_token %}
+                {{ profile_form }}
+                <div class="form-submit">
+                    <input type="submit" value="수정하기" class="button">
+                </div>
+                <div class="form-explain">
+                    음음음
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

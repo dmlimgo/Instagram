@@ -1,0 +1,18 @@
+.section-box {
+    display: flex;
+    padding-top: 60px;
+    margin: 0 auto;
+    max-width: 935px;
+    width: 100%;
+}
+.sec-article {
+    display: flex;
+    /*float: left;*/
+    margin-right: 28px;
+    max-width: 614px;
+    width: 100%;
+}
+.sec-article-box {
+    display: flex;
+    flex-direction: column;
+}

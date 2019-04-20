@@ -1,0 +1,146 @@
+.profile-box {
+    padding: 60px 20px 0;
+    margin: 0 auto 30px;
+}
+.pf-header-box {
+    display: flex;
+    margin-bottom: 44px;
+    flex-direction: row;
+}
+.pf-header-img-box {
+    display: flex;
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 0;
+    margin-right: 30px;   
+}
+.pf-header-img {
+    display: block;
+    height: 150px;
+    width: 150px;
+    margin: 0 auto;
+    background-color: #fafafa;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+}
+.pf-header-info-box {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 30px;
+    flex-grow: 2;
+    flex-shrink: 1;
+}
+.pf-header-info-nkname-box {
+    display: flex;
+    margin-bottom: 20px;
+    align-items: center;
+    flex-shrink: 1;
+}
+.pf-header-info-nkname {
+    display: flex;
+    color: #262626;
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 32px;
+    margin: -5px 0 -6px;
+}
+.pf-header-info-edit {
+    display: flex;
+    flex-shrink: 0;
+    outline: 0;
+    background-color: transparent;
+    border: 1px solid #dbdbdb;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 600;
+    color: #262626;
+    cursor: pointer;
+    padding: 5px 9px;
+    margin-left: 20px;
+}
+.pf-header-info-setting {
+    display: flex;
+    height: 40px;
+    width: 40px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5px;
+}
+.setting {
+    background-position-x: 0px;
+    background-position-y: -255px;
+}
+.pf-header-info-nav-box {
+    display: flex;
+    list-style: none;
+    /*font-size: 16px;*/
+    padding: 0;
+    margin-bottom: 20px;
+}
+.pf-header-info-li-box {
+    /*font-size: 16px;*/
+    margin-right: 40px;
+}
+.fw-600 {
+    font-weight: 600;
+}
+.pf-header-info-discription-box {
+    /*font-size: 16px;*/
+    line-height: 24px;
+}
+.pf-header-info-discription {
+    font-size: 16px;
+    font-weight: 600;
+}
+.pf-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    letter-spacing: 1px;
+    border-top: 1px solid #efefef;
+}
+.pf-nav-items {
+    display: flex;
+    color: #262626;
+    height: 52px;
+    justify-content: center;
+    align-items: center;
+    margin-right: 60px;
+}
+.pf-nav-items-box {
+    display: flex;
+    height: 18px;
+    align-items: center;
+}
+.pf-nav-icon{
+    display: flex;
+    background-image: url('/static/instagram/insta2.png');
+    background-repeat: no-repeat;
+    height: 12px;
+    width: 12px;
+}
+.posts {
+    background-position: -50px -425px;
+}
+.igtv {
+    background-position: -378px -217px;
+}
+.saved {
+    background-position: -78px -425px;
+}
+.taged {
+    background-position: -436px -399px;
+}
+.pf-nav-post-char {
+    height: 18px;
+    line-height: 18px;
+    font-size: 14px;
+    align-items: center;
+    margin-left: 6px;
+}

@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
+
 {% block body %}
-<div class="container">
+<div class="post-form-box">
+    <span class="post-form-title">글 작성하기</span><br>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ post_form|crispy }}
         {% if image_form %}
-            {{ image_form|crispy }}
+            {{ image_form }}
         {% endif %}
-        <input type="submit">
+        {{ post_form }}
+        <input type="submit" class="post-button">
     </form>
 </div>
 {% endblock %}

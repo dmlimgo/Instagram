@@ -14,7 +14,9 @@ def list(request):
                         Q(user__in=request.user.followings.values('id'))
                         | Q(user=request.user.id)
                         ).order_by('-pk')
-    context = {'posts': posts}
+    User = get_user_model()
+    users = User.objects.all()
+    context = {'posts': posts, 'users': users}
     return render(request, 'posts/list.html', context)
 # @login_required
 # def list(request):

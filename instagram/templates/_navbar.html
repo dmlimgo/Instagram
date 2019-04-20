@@ -1,6 +1,7 @@
 {% load static %}
 {% if user.is_authenticated %}
 <nav class="nav-box">
+<div class="nav-box-fixed">
     <div class="nav-inbox">
         <div class="nav-logobox">
             <a class="nav-logo" href="/posts/">
@@ -47,5 +48,6 @@
             </div>
         </div>
     </div>
+</div>
 </nav>
 {% endif %}

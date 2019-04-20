@@ -1,5 +1,37 @@
+/* section */
+.section-box {
+    display: flex;
+    flex-direction: row;
+    padding-top: 60px;
+    margin: 0 auto;
+    max-width: 935px;
+    width: 100%;
+}
+.sec-article {
+    display: flex;
+    /*float: left;*/
+    margin-right: 28px;
+    max-width: 614px;
+    width: 100%;
+}
+.sec-article-box {
+    display: flex;
+    flex-direction: column;
+}
 
-/*posts.css*/
+/* profile */
+.sec-pf-box {
+    position: fixed;
+    left: 692.5px;
+    top: 137px;
+    right: 0;
+    height: 100vh;
+    max-width: 293px;
+    width: 100%;
+    background-color: green;
+}
+
+
 .cards-box-round {
     border: 1px solid #e6e6e6;
     border-radius: 3px;

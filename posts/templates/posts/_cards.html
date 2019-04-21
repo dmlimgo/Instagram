@@ -4,22 +4,29 @@
             {% for post in posts %}
             <div class="cards-box-round">
                 <header class="card-title">
-                    <div class="card-title-canvas" role="button" href="{% url 'accounts:detail' post.user.pk %}">
-                        <span class="card-title-photo">
+                    <div class="card-title-photo">
+                        <div class="card-title-canvas" role="button" href="{% url 'accounts:detail' post.user.pk %}">
+                        </div>
+                        <a href="#" style="width: 34px; height: 34px;">
                             {% if post.user.profile.image %}
                             <img src="{{ post.user.profile.image.url }}" style="height: 34px; width:34px;">
                             {% else %}
                             <img src="{% static 'instagram/undefined_profile.jpg' %}" style="height: 34px; width:34px;">
                             {% endif %}
-                        </span>
+                        </a>
                     </div>
-                    {% if post.user.profile.nickname %}
-                    <span>{{ post.user.profile.nickname }}</span>
-                    {% else %}
-                    <span>{{ post.user.username }}</span>
-                    {% endif %}
+                    
+                    <div class="ctnk-b">
+                        <a href="{% url 'accounts:detail' post.user.pk %}" class="ctnk">
+                            {% if post.user.profile.nickname %}
+                                {{ post.user.profile.nickname }}
+                            {% else %}
+                                {{ post.user.username }}
+                            {% endif %}
+                        </a>
+                    </div>
                 </header>
-                <div class="content cards-flat">
+                <div class="cc-b">
                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
                             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -44,28 +51,65 @@
                     </div>
                     <!--<img src="{{ post.image_set.first.file.url }}" width="100%" alt="picture">-->
                 </div>
-                <div class="bar">
-    
-                </div>
-                <div class="content2">
-                    <p>{{ post.content }}</p>
-                </div>
-                <div class="comments">
-                    {% if user in post.like_users.all %}
-                    <a href="{% url 'posts:like' post.pk %}"><i class="fas fa-heart fa-1.5x" style="color:crimson"></i></a>
-                    {% else %}
-                    <a href="{% url 'posts:like' post.pk %}"><i class="far fa-heart fa-1.5x" style="color:darkgray"></i></a>
-                    {% endif %}
-                    <span>{{ post.like_count }}명이 좋아요를 눌렀습니다.</span>
-                </div>
-                <section class="comment-box d-flex align-items-center">
-                    <div class="inner-box">
-                        <form method="POST" class="comment-form d-flex align-items-center">
-                            <textarea type="text" name="comment" class="write-box" placeholder="댓글 달기..."></textarea>
-                            <button type="submit" class="write-button">게시</button>
-                        </form>
+                <div class="cc2-b">
+                    <section class="cc2n-b">
+                        <span class="cc2nh-b">
+                            <a href="{% url 'posts:like' post.pk %}" name="post-{{ post.pk }}">
+                                <div class="cc2nh-ib">
+                                    {% if user in post.like_users.all %}
+                                        <span class="nav-icon cc2nh"></span>
+                                    {% else %}
+                                        <span class="nav-icon cc2nhf"></span>
+                                    {% endif %}
+                                </div>
+                            </a>
+                        </span>
+                        <span class="cc2nc-b">
+                            <a href="#" name="post-{{ post.pk }}">
+                                <div class="cc2nh-ib">
+                                    <span class="nav-icon cc2nc"></span>
+                                </div>
+                            </a>
+                        </span>
+                        <span class="cc2nu-b">
+                            <a href="#" name="post-{{ post.pk }}">
+                                <div class="cc2nh-ib">
+                                    <span class="nav-icon cc2nu"></span>
+                                </div>
+                            </a>
+                        </span>
+                        <span class="cc2nb-b">
+                            <a href="#" name="post-{{ post.pk }}">
+                                <div class="cc2nh-ib">
+                                    <span class="nav-icon cc2nb"></span>
+                                </div>
+                            </a>
+                        </span>
+                    </section>
+                    <section class="cc2l-b">
+                        
+                    </section>
+                    <div class="cc2c-b">
+                        
                     </div>
-                </section>
+                    <div class="cc2t-b">
+                        
+                    </div>
+                    <section class="cc2wc-b">
+                        
+                    </section>
+                    
+                    <div class="comments">
+                    </div>
+                    <section class="comment-box d-flex align-items-center">
+                        <div class="inner-box">
+                            <form method="POST" class="comment-form d-flex align-items-center">
+                                <textarea type="text" name="comment" class="write-box" placeholder="댓글 달기..."></textarea>
+                                <button type="submit" class="write-button">게시</button>
+                            </form>
+                        </div>
+                    </section>
+                </div>
             </div>
             {% endfor %}
         </div>

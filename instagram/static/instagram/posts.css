@@ -40,7 +40,7 @@
 .sec-aside-fixed-box {
     position: fixed;
     width: 293px;
-    top: 137px;
+    top: 135px;
     transition: top 0.1s;
 }
 .sec-aside-pf-box {
@@ -291,14 +291,11 @@
     border: 1px solid #e6e6e6;
     border-radius: 3px;
     margin-bottom: 60px;
+    margin-left: -1px;
+    margin-right: -1px;
     padding: 0;
     max-width: 616px;
     background-color: white;
-}
-.cards-flat {
-    border-top: 1px solid #e6e6e6;
-    border-bottom: 1px solid #e6e6e6;
-    padding: 0;
 }
 .card-title {
     display: flex;
@@ -310,14 +307,6 @@
     background-color: white;
     margin: 0;
 }
-.card-title-canvas {
-    display: flex;
-    height: 44px;
-    width: 44px;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
 .card-title-photo {
     display: block;
     height: 34px;
@@ -326,6 +315,76 @@
     border-radius: 50%;
     overflow: hidden;
 }
+.card-title-canvas {
+    position: absolute;
+    height: 44px;
+    width: 44px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.ctnk-b {
+    display: flex;
+    margin-left: 16px;
+}
+.ctnk {
+    display: flex;
+    font-size: 14px;
+    font-weight: 600;
+}
+.cc-b {
+    /*border-bottom: 1px solid #e6e6e6;*/
+    /*padding: 0;*/
+}
+.cc2-b {
+    /*padding: 0;*/
+}
+.cc2n-b {
+    display: flex;
+    margin-top: 4px;
+    padding: 0 16px;
+}
+/* centent-nav-heart */
+.cc2nh-b {
+    display: inline-block;
+    margin-left: -8px;
+}
+.cc2nh-ib {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+}
+.cc2nh {
+    background-position: -78px -203px;
+}
+.cc2nhf {
+    background-position: -52px -203px;
+}
+/*content-nav-cart*/
+.cc2nc-b {
+    display: inline-block;
+}
+.cc2nc {
+    background-position: -131px -146px;
+}
+.cc2nu-b {
+    display: inline-block;
+}
+.cc2nu {
+    background-position: -26px -255px;
+}
+.cc2nb-b {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: -10px;
+}
+.cc2nb {
+    background-position: -268px -130px;
+}
+
+
 .button {
     border: 1px solid #e6e6e6;
     border-radius: 25px;

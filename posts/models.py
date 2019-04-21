@@ -39,7 +39,6 @@ class Image(models.Model):
         )
         
 class Comment(models.Model):
-    title = models.CharField(max_length=30)
     content = models.TextField()
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

@@ -57,9 +57,9 @@
                             <a href="{% url 'posts:like' post.pk %}" name="post-{{ post.pk }}">
                                 <div class="cc2nh-ib">
                                     {% if user in post.like_users.all %}
-                                        <span class="nav-icon cc2nh"></span>
-                                    {% else %}
                                         <span class="nav-icon cc2nhf"></span>
+                                    {% else %}
+                                        <span class="nav-icon cc2nh"></span>
                                     {% endif %}
                                 </div>
                             </a>
@@ -87,10 +87,44 @@
                         </span>
                     </section>
                     <section class="cc2l-b">
-                        
+                        <div class="cc2l-ib">
+                            <a href="">
+                                <!--Modal 연결-->
+                                <span class="cc2l">
+                                    좋아요 
+                                    {{ post.like_users.all.count }}개
+                                </span>
+                            </a>
+                        </div>
                     </section>
                     <div class="cc2c-b">
-                        
+                        <ul class="cc2c-u">
+                            <!--컨텐츠 추가해야함 -->
+                            <li class="content"></li>
+                            <li class="seeall"></li>
+                            <li class="cc2c-comments-box">
+                                {% for comment in post.comment_set.all %}
+                                    <div class="cc2cc-each-box">
+                                        <div class="cc2cce-comment-box">
+                                            <a href="{% url 'accounts:detail' comment.user.pk %}" class="cc2cce-nkname">
+                                                <!--댓쓴이에게 이동-->
+                                                {% if comment.user.profile.nickname %}
+                                                    {{ comment.user.profile.nickname }}
+                                                {% else %}
+                                                    {{ comment.user.username }}
+                                                {% endif %}
+                                            </a>
+                                            <span style="font-size: 14px;">
+                                                {{ comment.content }}
+                                            </span>
+                                        </div>
+                                        <span class="cc2cce-heart">
+                                            <!--추가해야하나.. 댓글 좋아요는 아직인데..-->
+                                        </span>
+                                    </div>
+                                {% endfor %}
+                            </li>
+                        </ul>
                     </div>
                     <div class="cc2t-b">
                         
@@ -103,8 +137,9 @@
                     </div>
                     <section class="comment-box d-flex align-items-center">
                         <div class="inner-box">
-                            <form method="POST" class="comment-form d-flex align-items-center">
-                                <textarea type="text" name="comment" class="write-box" placeholder="댓글 달기..."></textarea>
+                            <form action="{% url 'posts:comment_new' post.pk %}" method="POST" class="comment-form d-flex align-items-center">
+                                {% csrf_token %}
+                                <textarea type="text" name="content" class="write-box" placeholder="댓글 달기..."></textarea>
                                 <button type="submit" class="write-button">게시</button>
                             </form>
                         </div>

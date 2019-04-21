@@ -369,12 +369,14 @@
 .cc2nc {
     background-position: -131px -146px;
 }
+/*content-nav-upload*/
 .cc2nu-b {
     display: inline-block;
 }
 .cc2nu {
     background-position: -26px -255px;
 }
+/*content-nav-bookmark*/
 .cc2nb-b {
     display: inline-block;
     margin-left: auto;
@@ -382,6 +384,58 @@
 }
 .cc2nb {
     background-position: -268px -130px;
+}
+
+/*content-like*/
+.cc2l-b {
+    display: flex;
+    margin-bottom: 8px;
+    padding: 0 16px;
+}
+.cc2l-ib {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cc2l {
+    display: flex;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 600;
+    color: #262626;
+}
+/*content-content*/
+.cc2c-b {
+    display: flex;
+    margin: 0 0 auto;
+    padding: 0 16px;
+}
+.cc2c-u {
+    list-style: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.cc2c-comments-box {
+    list-style: none;
+    width: 100%;
+    overflow: hidden;
+    margin: -5px -2px 0 0;
+    padding: 5px 2px 6px 0;
+}
+.cc2cc-each-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.cc2cce-comment-box {
+    display: flex;
+    width: calc(100% - 28px);
+}
+.cc2cce-nkname {
+    font-size: 14px;
+    font-weight: 600;
+    margin-right: 4px;
 }
 
 

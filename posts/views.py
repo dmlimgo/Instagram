@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Post, Image
+from .models import Post, Image, Comment
 from .forms import PostForm, ImageForm
 from django.forms import widgets, ModelForm
 from django.contrib.auth import get_user_model
@@ -102,4 +102,14 @@ def like(request, posts_pk):
         post.like_users.remove(user)
     else:
         post.like_users.add(user)
+    return redirect('posts:list')
+    
+@login_required
+def comment_new(request, posts_pk):
+    post = get_object_or_404(Post, pk=posts_pk)
+    comment = Comment()
+    comment.content = request.POST.get('content')
+    comment.post = post
+    comment.user = request.user
+    comment.save()
     return redirect('posts:list')

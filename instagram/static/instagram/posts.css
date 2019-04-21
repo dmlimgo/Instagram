@@ -1,3 +1,8 @@
+.underconstruct {
+    flex-grow: 1;
+    text-align: center;
+}
+
 /* section */
 .section-box {
     display: flex;
@@ -21,13 +26,22 @@
 
 /* profile */
 .sec-aside-box {
-    position: fixed;
-    left: 692.5px;
-    top: 137px;
-    right: 0;
+    display: flex;
+    /*position: fixed;*/
+    /*left: 692.5px;*/
+    /*top: 137px;*/
+    /*right: 0;*/
+    flex-direction: column;
     height: 100vh;
-    max-width: 293px;
-    width: 100%;
+    /*max-width: 293px;*/
+    width: 293px;
+    /*width: 100%;*/
+}
+.sec-aside-fixed-box {
+    position: fixed;
+    width: 293px;
+    top: 137px;
+    transition: top 0.1s;
 }
 .sec-aside-pf-box {
     display : flex;
@@ -165,6 +179,7 @@
 }
 .sascec-b {
     display: flex;
+    flex-grow: 1;
     flex-direction: column;
     margin-left: 14px;
 }
@@ -186,11 +201,89 @@
     line-height: 12px;
 }
 
-.sec-asdie-recom-box {
-    
+/* recommend */
+.sar-b {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border: 1px solid #e6e6e6;
+    border-radius: 4px;
+    justify-content: flex-start;
+    margin: 12px 0;    
 }
-.sec-aside-footer-box {
-    
+.sarc-m1 {
+    display: flex;
+    flex-basis: auto;
+    margin-left: 4px;
+    margin-bottom: 4px;
+}
+.sarc-m2 {
+    display: flex;
+    flex-grow: 1;
+    padding: 8px 0;
+}
+.sarc-b {
+    display: flex;
+    flex-grow: 1;
+}
+.sarc-ib {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.sarce-b {
+    display: flex;
+    flex-basis: auto;
+    padding: 8px 16px;
+}
+.sarcecf-b {
+    display: flex;
+    margin-left: 8px;
+    align-items: center;
+}
+.sarcecf, .sarcecf:hover, .sarcecf:visited, .sarcecf:active {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 18px;
+    color: #3897f0;
+}
+
+/*footer*/
+.saf-b {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-bottom: 38px;
+}
+.safn-b {
+    display: flex;
+    margin-bottom: 16px;
+    max-width: 100%;
+}
+.safnu-b {
+    display: flex;
+    flex-grow: 1;
+    margin-right: 16px;
+    margin-bottom: 3px;
+    padding: 0;
+}
+.safnul, .safnul:visited, .safnul:hover, .safnul:active {
+    display: inline-block;
+    list-style: none;
+    color: #c7c7c7;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 13px;
+}
+.safnul:not(:last-of-type)::after {
+    content: "\00B7";
+    margin: 0 0.25em;
+}
+.saff {
+    color: #c7c7c7;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 13px;
 }
 
 /* cards */

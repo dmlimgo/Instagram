@@ -83,6 +83,7 @@ def follow(request, user_pk):
         target_user.followers.remove(request.user)
     else:
         target_user.followers.add(request.user)
+    # print(request.resolver_match.url_name)
     return redirect('accounts:detail', user_pk)
 
 @login_required

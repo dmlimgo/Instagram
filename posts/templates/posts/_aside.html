@@ -1,0 +1,166 @@
+{% load static %}
+<div class="sec-aside-box">
+    <div class="sec-aside-fixed-box" id="js-up">
+        <div class="sec-aside-pf-box">
+            <div class="sec-aside-pf-inbox">
+                <div class="sec-aside-pf-photo-box" role="button">
+                    <a href="{% url 'accounts:profile' %}" class="sec-aside-pf-photo">
+                        {% if user.profile.image %}
+                        <img src="{{ user.profile.image.url }}" style="height:100%; width:100%; border-radius: 50%;">
+                        {% else %}
+                        <img src="{% static 'instagram/undefined_profile.jpg' %}" style="height:100%; width:100%; border-radius: 50%;">
+                        {% endif %}
+                    </a>
+                </div>
+                <div class="sec-aside-pf-name-box">
+                    <div class="sec-aside-pf-name-nk-box">
+                        <a href="{% url 'accounts:profile' %}" class="sec-aside-pf-name-nk">
+                            {{ user.profile.nickname }}
+                        </a>
+                    </div>
+                    <div class="sec-aside-pf-name-n-box">
+                        {{ user.username }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sas-b">
+            <div class="sast-b">
+                <div class="sastt-b">
+                    <div class="sasttt">
+                        스토리
+                    </div>
+                </div>
+                <a href="#" class="sasta-b">
+                    <div class="sastaa">
+                        모두 보기
+                    </div>
+                </a>
+            </div>
+            <div class="sasc-m1">
+                <div class="sasc-m2">
+                    <div class="sasc-b">
+                        <div class="sasc-ib">
+                            <!-- 새 글 있으면 반복문 -->
+                            <!-- 일단은 모든 유저 -->
+                            {% for each_user in users %}
+                                {% if each_user != user %}
+                                {% if not each_user.is_superuser %}
+                                <div style="height: 52px;">
+                                    <!--원래는 버튼(밑)-->
+                                    <div class="sasce-b">
+                                        <div class="sascep-b" href="{% url 'accounts:detail' each_user.pk %}" role="button">
+                                            {% if each_user.profile.image %}
+                                            <img role="link" src="{{ each_user.profile.image.url }}" class="sascep">
+                                            {% else %}
+                                            <img role="link" src="{% static 'instagram/undefined_profile.jpg' %}" class="sascep">
+                                            {% endif %}
+                                        </div>
+                                        <div class="sascec-b">
+                                            <div class="sascecnk-b">
+                                                <span>
+                                                    {% if eachuser.profile.nickname %}
+                                                        {{ each_user.profile.nickname }}
+                                                    {% else %}
+                                                        {{ each_user.username }}
+                                                    {% endif %}
+                                                </span>
+                                            </div>
+                                            <div class="sascect-b">
+                                                <!--시간표시-->
+                                                <!--나중에 수정해야함-->
+                                                <span class="sascect">
+                                                3시간 전
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                            <!-- 반복문 끝 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 추천이네 위랑 같아서 복붙 -->
+        <div class="sar-b">
+            <div class="sast-b">
+                <div class="sastt-b">
+                    <div class="sasttt">
+                        회원님을 위한 추천
+                    </div>
+                </div>
+                <a href="#" class="sasta-b">
+                    <div class="sastaa">
+                        모두 보기
+                    </div>
+                </a>
+            </div>
+            <div class="sarc-m1">
+                <div class="sarc-m2">
+                    <div class="sarc-b">
+                        <div class="sarc-ib">
+                            {% for each_user in users %}
+                                {% if each_user not in user.followings.all %}
+                                {% if not each_user.is_superuser %}
+                                <div class="sarce-b">
+                                    <!--원래는 버튼(밑)-->
+                                    <div class="sascep-b" href="{% url 'accounts:detail' each_user.pk %}" role="button">
+                                        {% if each_user.profile.image %}
+                                        <img role="link" src="{{ each_user.profile.image.url }}" class="sascep">
+                                        {% else %}
+                                        <img role="link" src="{% static 'instagram/undefined_profile.jpg' %}" class="sascep">
+                                        {% endif %}
+                                    </div>
+                                    <div class="sascec-b" style="margin-left: 12px;">
+                                        <div class="sascecnk-b">
+                                            <span>
+                                                {% if each_user.profile.nickname %}
+                                                    {{ each_user.profile.nickname }}
+                                                {% else %}
+                                                    {{ each_user.username }}
+                                                {% endif %}
+                                            </span>
+                                        </div>
+                                        <div class="sascect-b">
+                                            <!--시간꺼 갖다 쓰기만 함-->
+                                            <!--이건 어쩔수 없음 그냥 통일-->
+                                            <span class="sascect" style="font-size: 12px;">
+                                            Facebook 친구
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="sarcecf-b">
+                                        <a href="{% url 'accounts:follow' each_user.pk %}" class="sarcecf">
+                                            팔로우
+                                        </a>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                            <!-- 반복문 끝 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="saf-b">
+            <nav class="safn-b">
+                <ul class="safnu-b">
+                    <li class="safnul"><a href="#" class="safnul">INSTAGRAMU 정보</a></li>
+                    <li class="safnul"><a href="#" class="safnul">후원</a></li>
+                    <li class="safnul"><a href="#" class="safnul">회원목록</a></li>
+                    <li class="safnul"><a href="#" class="safnul">어디로든 문</a></li>
+                    <li class="safnul"><a href="#" class="safnul">???</a></li>
+                </ul>
+            </nav>
+            <span class="saff">
+                © 2019 INSTAGRAMU
+            </span>
+        </div>
+    </div>
+</div>

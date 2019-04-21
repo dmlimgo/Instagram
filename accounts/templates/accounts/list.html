@@ -1,8 +1,13 @@
 {% extends 'base.html' %}
 {% block body %}
+<div style="flex-direction: column;">
 {% for user in users %}
+{% if not user.is_superuser %}
     <div>
         <p><a href="{% url 'accounts:detail' user.pk %}">{{ user.username }}</a></p>
     </div>
+    <br>
+{% endif %}
 {% endfor %}
+</div>
 {% endblock %}

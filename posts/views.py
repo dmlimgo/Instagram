@@ -9,7 +9,7 @@ from django.db.models import Q
 # Create your views here.
 @login_required
 def list(request):
-    from django.db.models import Q
+    # from django.db.models import Q
     posts = Post.objects.filter(
                         Q(user__in=request.user.followings.values('id'))
                         | Q(user=request.user.id)

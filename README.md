@@ -22,7 +22,33 @@ $ python manage.py runserver
 
 
 
-## 로그인 페이지
+## Django 구현 기능
+
+> 강의 내용대로 진행하였습니다. 앱 별로 정리하였습니다.
+
+#### 공통
+
+- `get_objects_or_404`를 이용해 원하는 객체가 없을 경우 404Error를 반환하였습니다.
+- `Restful API`를 구성하였습니다.
+
+#### accounts
+
+- ModelForm을 이용한 From 관리, UserCreationForm과 AuthenticationForm을 이용한 로그인 / 회원가입을 구성하였습니다.
+- decorator `@require_http_methods`를 이용해 특정 http method에만 동작합니다.
+- decorator `@login_required`를 이용해 로그인시에만 동작합니다.
+- `AbstractUser`를 이용해 User 모델간에 M:N구조를 적용하였습니다.
+
+#### posts
+
+- 게시글의 CRUD를 구성하였습니다.
+
+
+
+
+
+## 추가 학습한 기능
+
+#### 로그인 페이지 CSS
 
 인스타그램 웹 페이지의 소스코드를 참조하여 **레이아웃**을 어떻게 구성하는지 배울 수 있었습니다.
 
